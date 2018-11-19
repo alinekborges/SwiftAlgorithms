@@ -29,3 +29,31 @@ func minimumSwaps(arr: [Int]) -> Int {
 let result = minimumSwaps(arr: array)
 
 print(result)
+
+func getCurrentAppVersion() -> String {
+    guard let dic = Bundle.main.infoDictionary, let version = dic["CFBundleShortVersionString"] as? String else {
+        return ""
+    }
+    return version
+}
+
+func getCurrentBuildVersion() -> String {
+    guard let dic = Bundle.main.infoDictionary, let version = dic["CFBundleVersion"] as? String else {
+        return ""
+    }
+    return version
+}
+
+func getCurrentOsVersion() -> String {
+    return UIDevice.current.systemVersion
+}
+
+func getModelName() -> String {
+    return UIDevice.current.model
+}
+
+func getUserAgent() -> String {
+    return "CONGO/\(getCurrentBuildVersion()) (iOS;iOS \(getCurrentOsVersion());iOS \(getCurrentOsVersion());iOS \(getModelName());iOS \(getModelName()))"
+}
+
+print(getUserAgent())
